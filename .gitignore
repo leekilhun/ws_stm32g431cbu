@@ -27,7 +27,6 @@ build
 *.fw
 *.elf
 *.map
-*.json
 
 ## 폴더 무시
 cmake/
