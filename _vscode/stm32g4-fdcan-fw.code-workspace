@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "stm32g4-fdcan-fw"
+		}
+	],
+  "settings":  {
+    "cmake.configureArgs": [
+        "-DARM_TOOLCHAIN_DIR=C:/DevSoft/arm-tools/gcc-arm-none-eabi-10.3-2021.10/bin",
+        "-DCMAKE_MAKE_PROGRAM=C:/DevSoft/arm-tools/xpack-windows-build-tools-4.4.0-1/bin/make.exe"
+    ],	
+    "cmake.generator": "Unix Makefiles",
+    "terminal.integrated.env.windows": {  
+			"ARM_TOOLCHAIN_DIR":"C:/DevSoft/arm-tools/gcc-arm-none-eabi-10.3-2021.10/bin",
+			"PATH": "${env:PATH};C:/DevSoft/arm-tools/mingw32/bin",	
+			},
+    "cortex-debug.armToolchainPath": "C:/DevSoft/arm-tools/gcc-arm-none-eabi-10.3-2021.10/bin",
+    "files.autoSave": "onFocusChange",
+    "editor.fontFamily": "D2Coding,Consolas, 'Courier New', monospace",
+    "editor.tabSize": 2
+  }
+}
