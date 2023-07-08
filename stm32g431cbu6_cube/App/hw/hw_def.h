@@ -16,88 +16,67 @@
 /****************************************************
    boot/ firmware memory information
  ****************************************************/
+
+#define _DEF_FIRMWATRE_VERSION    "V230702R1"
+#define _DEF_BOARD_NAME           "STM32G4-FDCAN-FW"
+
+
 /* ------------------------------------------------- */
 
 
-//#define _USE_HW_FLASH
 
-//#define _USE_HW_RTC
-//#define _USE_HW_RESET
+#define _USE_HW_SPI_FLASH
+
 
 #define _USE_HW_LED
-#define      HW_LED_MAX_CH          1
+#define      HW_LED_MAX_CH          5
+#define      HW_LED_CH_DEBUG        _DEF_LED1
+#define      HW_LED_CH_RX           _DEF_LED2
+#define      HW_LED_CH_TX           _DEF_LED3
+#define      HW_LED_CH_CAN          _DEF_LED4
+#define      HW_LED_CH_RS485        _DEF_LED5
 
 
-//#define _USE_HW_BUZZER
-
-//#define _USE_HW_GPIO
-#define      HW_GPIO_MAX_CH         27
-#define        _GPIO_SPI_NCS        0
-#define        _GPIO_SPI_NSS        1
-#define        _GPIO_OP_SW_START    2
-#define        _GPIO_OP_SW_STOP     3
-#define        _GPIO_OP_SW_RESET    4
-#define        _GPIO_OP_SW_ESTOP    5
-#define        _GPIO_OP_LAMP_START  6
-#define        _GPIO_OP_LAMP_STOP   7
-#define        _GPIO_OP_LAMP_RESET  8
-#define        _GPIO_IO_IN_01       9
-#define        _GPIO_IO_IN_02       10
-#define        _GPIO_IO_IN_03       11
-#define        _GPIO_IO_IN_04       12
-#define        _GPIO_IO_IN_05       13
-#define        _GPIO_IO_IN_06       14
-#define        _GPIO_IO_IN_07       15
-#define        _GPIO_IO_IN_08       16
-#define        _GPIO_IO_OUT_01      17
-#define        _GPIO_IO_OUT_02      18
-#define        _GPIO_IO_OUT_03      19
-#define        _GPIO_IO_OUT_04      20
-#define        _GPIO_IO_OUT_05      21
-#define        _GPIO_IO_OUT_06      22
-#define        _GPIO_IO_OUT_07      23
-#define        _GPIO_IO_OUT_08      24
-#define        _GPIO_I2C_INTERRUPT  25
-#define        _GPIO_SPI_ROM_CS     26
-
-
-
-//#define _USE_HW_UART
+#define _USE_HW_UART
 #define      HW_UART_MAX_CH         4
-#define      HW_UART_MOTOR          _DEF_UART1
-#define      HW_UART_PC             _DEF_UART2
-#define      HW_UART_LCD            _DEF_UART3
-#define      HW_UART_LOG            _DEF_UART4
-#define _USE_HW_UART_1_DMA
-#define _USE_HW_UART_2_DMA
-#define _USE_HW_UART_3_DMA
+#define      HW_UART_CH_DEBUG       _DEF_UART1
+#define      HW_UART_CH_RS485       _DEF_UART2
+#define      HW_UART_CH_EXT         _DEF_UART3
+#define      HW_UART_CH_USB         _DEF_UART4
 
-
-//#define _USE_HW_LOG
-#define      HW_LOG_CH              _DEF_UART4
-#define      HW_LOG_BOOT_BUF_MAX    1024
-#define      HW_LOG_LIST_BUF_MAX    2048
-
-//#define _USE_HW_CLI
-#define      HW_CLI_CMD_LIST_MAX    16
+#define _USE_HW_CLI
+#define      HW_CLI_CMD_LIST_MAX    32
 #define      HW_CLI_CMD_NAME_MAX    16
-#define      HW_CLI_LINE_HIS_MAX    4
+#define      HW_CLI_LINE_HIS_MAX    8
 #define      HW_CLI_LINE_BUF_MAX    64
 
-//#define _USE_HW_CAN
+#define _USE_HW_LOG
+#define      HW_LOG_CH              _DEF_UART1
+#define      HW_LOG_BOOT_BUF_MAX    1024
+#define      HW_LOG_LIST_BUF_MAX    1024
+
+#define _USE_HW_BUTTON
+#define      HW_BUTTON_MAX_CH       3
+#define      HW_BUTTON_CH_BOOT      _DEF_BUTTON1
+#define      HW_BUTTON_CH_S1        _DEF_BUTTON2
+#define      HW_BUTTON_CH_S2        _DEF_BUTTON3
+
+#define _USE_HW_SWTIMER
+#define      HW_SWTIMER_MAX_CH      4
+
+#define _USE_HW_CAN
 #define      HW_CAN_MAX_CH          1
-#define      HW_CAN_MSG_RX_BUF_MAX  16
+#define      HW_CAN_MSG_RX_BUF_MAX  32
 
-//#define _USE_HW_SPI
+#define _USE_HW_GPIO
+#define      HW_GPIO_MAX_CH         1
+
+#define _USE_HW_SPI
 #define      HW_SPI_MAX_CH          1
-//#define        _SPI_W25Q16          _DEF_SPI1
-//#define        _SPI_SLAVE           _DEF_SPI2
 
-
-//#define _USE_HW_I2C
-#define      HW_I2C_MAX_CH          2
-#define        _I2C_EXT_IO          _DEF_I2C1
-#define        _I2C_EEPROM          _DEF_I2C2
-
+#define _USE_HW_USB
+#define _USE_HW_CDC
+#define      HW_USE_CDC             1
+#define      HW_USE_MSC             0
 
 #endif /* HW_HW_DEF_H_ */

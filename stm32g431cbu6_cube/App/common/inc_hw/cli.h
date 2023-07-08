@@ -39,7 +39,6 @@ typedef struct
   bool     (*isStr)(uint8_t index, const char *p_str);
 } cli_args_t;
 
-
 bool cliInit(void);
 bool cliOpen(uint8_t ch, uint32_t baud);
 bool cliOpenLog(uint8_t ch, uint32_t baud);
@@ -47,9 +46,12 @@ bool cliMain(void);
 void cliPrintf(const char *fmt, ...);
 bool cliAdd(const char *cmd_str, void (*p_func)(cli_args_t *));
 bool cliKeepLoop(void);
+uint8_t  cliGetPort(void);
 uint32_t cliAvailable(void);
 uint8_t  cliRead(void);
 uint32_t cliWrite(uint8_t *p_data, uint32_t length);
+bool cliRunStr(const char *fmt, ...);
+
 
 #endif
 

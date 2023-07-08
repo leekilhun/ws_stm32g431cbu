@@ -23,12 +23,10 @@ extern "C" {
 #define GPIO_MAX_CH     HW_GPIO_MAX_CH
 
   bool gpioInit(void);
+  bool gpioPinMode(uint8_t ch, uint8_t mode);
   void gpioPinWrite(uint8_t ch, bool value);
   bool gpioPinRead(uint8_t ch);
   void gpioPinToggle(uint8_t ch);
-  bool gpioIsOn(uint8_t ch);
-
-  void gpioAttachCallbackFunc(uint8_t ch,void (*cb_func)(void)/*bool(*cb_func)(uint8_t,uint8_t*,uint8_t)*/);
 
 #endif
 

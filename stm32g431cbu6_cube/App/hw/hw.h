@@ -18,12 +18,17 @@ extern "C" {
 #include "hw_def.h"
 
 #include "led.h"
-#include "uart.h"
 #include "cli.h"
-#include "i2c.h"
+#include "log.h"
+#include "uart.h"
+#include "button.h"
+#include "swtimer.h"
+#include "can.h"
 #include "gpio.h"
-#include "flash.h"
-
+#include "spi.h"
+#include "spi_flash.h"
+#include "usb.h"
+#include "cdc.h"
 
 
 bool hwInit(void);

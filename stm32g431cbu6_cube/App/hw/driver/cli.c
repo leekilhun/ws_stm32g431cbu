@@ -13,7 +13,6 @@
 #include "cli.h"
 #include "uart.h"
 
-
 #ifdef _USE_HW_CLI
 
 
@@ -140,9 +139,16 @@ bool cliInit(void)
 bool cliOpen(uint8_t ch, uint32_t baud)
 {
   cli_node.ch = ch;
-  cli_node.baud = baud;
 
-  cli_node.is_open = uartOpen(ch, baud);
+
+  if (cli_node.is_open == false || cli_node.baud != baud)
+  {
+    if (baud > 0)
+    {
+      cli_node.baud = baud;
+      cli_node.is_open = uartOpen(ch, baud);
+    }
+  }
 
   return cli_node.is_open;
 }
@@ -161,6 +167,11 @@ bool cliOpenLog(uint8_t ch, uint32_t baud)
     cli_node.is_log = true;
   }
   return ret;
+}
+
+uint8_t cliGetPort(void)
+{
+  return cli_node.ch;
 }
 
 bool cliLogClose(void)
@@ -560,6 +571,21 @@ bool cliParseArgs(cli_t *p_cli)
   return ret;
 }
 
+bool cliRunStr(const char *fmt, ...)
+{
+  bool ret;
+  va_list arg;
+  va_start (arg, fmt);
+  cli_t *p_cli = &cli_node;
+
+  vsnprintf((char *)p_cli->line.buf, CLI_LINE_BUF_MAX, fmt, arg);
+  va_end (arg);
+
+  ret = cliRunCmd(p_cli);
+
+  return ret;
+}
+
 void cliPrintf(const char *fmt, ...)
 {
   va_list arg;
@@ -572,6 +598,13 @@ void cliPrintf(const char *fmt, ...)
   va_end (arg);
 
   uartWrite(p_cli->ch, (uint8_t *)p_cli->print_buffer, len);
+}
+
+void cliPutch(uint8_t data)
+{
+  cli_t *p_cli = &cli_node;
+
+  uartWrite(p_cli->ch, &data, 1);
 }
 
 void cliToUpper(char *str)
@@ -777,6 +810,7 @@ void cliMemoryDump(cli_args_t *args)
         ascptr+=1;
       }
       cliPrintf("|\n   ");
+      delay(1);
     }
     addr++;
   }
