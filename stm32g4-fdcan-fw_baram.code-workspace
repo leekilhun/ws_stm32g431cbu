@@ -22,6 +22,9 @@
 			},
     "files.autoSave": "onFocusChange",
     "editor.fontFamily": "D2Coding,Consolas, 'Courier New', monospace",
-    "editor.tabSize": 2
+		"editor.tabSize": 2,
+		"files.associations": {
+			"eeprom_emul.h": "c"
+		}
   }
 }
