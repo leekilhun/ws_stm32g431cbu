@@ -22,6 +22,12 @@ extern "C" {
 #include "flash.h"
 #include "fs.h"
 #include "nvs.h"
+#include "eeprom.h"
+#include "rtc.h"
+#include "reset.h"
+#include "cmd.h"
+#include "util.h"
+
 
 bool hwInit(void);
 

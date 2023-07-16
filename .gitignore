@@ -28,6 +28,7 @@ build
 *.elf
 *.map
 *.json
+*.code-workspace
 
 ## 폴더 무시
 cmake/
@@ -41,6 +42,5 @@ Release/
 .settings/
 Templates/
 _htmresc/
-stm32g070rbt6_cube/
-stm32g070rbt6_cube_led/
 .imgs/
+.vscode/
