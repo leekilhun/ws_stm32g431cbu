@@ -437,6 +437,18 @@ void cliCmd(cli_args_t *args)
     {
       cliPrintf("flash addr  : 0x%X\n", 0x0000000);
     }
+    else if (args->isStr(0, "get_id") == true)
+    {
+      uint8_t id_tbl[4];
+      if (spiFlashGetID(id_tbl, 4) == true)
+      {
+        cliPrintf("ID : %X %X %X %X\n", id_tbl[0], id_tbl[1], id_tbl[2], id_tbl[3]);
+      }
+      else
+      {
+        cliPrintf("Fail\n");
+      }
+    }
     else
     {
       ret = false;
@@ -513,6 +525,7 @@ void cliCmd(cli_args_t *args)
   if (ret == false)
   {
     cliPrintf( "spiFlash info\n");
+    cliPrintf( "spiFlash get_id\n");
     cliPrintf( "spiFlash read  [addr] [length]\n");
     cliPrintf( "spiFlash erase [addr] [length]\n");
     cliPrintf( "spiFlash write [addr] [data]\n");

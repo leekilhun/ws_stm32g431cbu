@@ -3,6 +3,7 @@
 #include "thread.h"
 #include "common/event.h"
 
+#if 0
 
 static bool rs485Threadinit(void);
 static bool rs485Threadupdate(void);
@@ -29,3 +30,6 @@ bool rs485Threadupdate(void)
 {
   return true;
 }
+
+
+#endif

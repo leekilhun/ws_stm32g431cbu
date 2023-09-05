@@ -4,6 +4,7 @@
 #include "common/event.h"
 
 
+#if 0
 
 static bool modeThreadInit(void);
 static void modeThreadISR(void *arg);
@@ -107,3 +108,6 @@ void modeThreadISR(void *arg)
       break;
   }
 }
+
+
+#endif

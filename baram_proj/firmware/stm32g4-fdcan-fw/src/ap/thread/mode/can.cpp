@@ -3,7 +3,7 @@
 #include "thread.h"
 #include "common/event.h"
 
-
+#if 0
 static bool canThreadinit(void);
 static bool canThreadupdate(void);
 
@@ -31,3 +31,4 @@ bool canThreadupdate(void)
   return true;
 }
 
+#endif

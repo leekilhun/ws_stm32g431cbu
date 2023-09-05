@@ -35,12 +35,27 @@ file(GLOB_RECURSE SRC_FILES_RECURSE CONFIGURE_DEPENDS
   src/lib/littlefs/*.c
 )
 
+
+# 특정 폴더를 빌드에서 제외한다.
+#
+set(EXCLUDE_PATHS 
+  "src/ap/thread/mode"
+)
+
+foreach(TMP_PATH ${SRC_FILES_RECURSE}) 
+  foreach(EXCLUDE_PATH ${EXCLUDE_PATHS}) 
+    string(FIND ${TMP_PATH} ${EXCLUDE_PATH} RESULT) 
+    if(NOT ${RESULT} EQUAL -1) 
+      list(REMOVE_ITEM SRC_FILES_RECURSE ${TMP_PATH}) 
+    endif() 
+  endforeach(EXCLUDE_PATH) 
+endforeach(TMP_PATH)
+
+
 add_executable(${EXECUTABLE} 
   ${SRC_FILES}
   ${SRC_FILES_RECURSE}
 )
-
-
 
 target_include_directories(${EXECUTABLE} PRIVATE 
   src  

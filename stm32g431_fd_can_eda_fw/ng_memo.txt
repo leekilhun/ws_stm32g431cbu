@@ -1,0 +1,52 @@
+[ Bootloader Begin... ]
+Booting..Name           : STM32G4-FDCAN-BOOT
+Booting..Ver            : B230715R1
+Booting..Clock          : 160 Mhz
+
+[OK] rtcInit()
+[OK] resetInit()
+     RESET_BIT_PIN
+[OK] spiFlashInit()
+     W25Q128JV Found
+[OK] flashInit()
+
+[  ] bootJumpFirm()
+[  ] bootJumpFirm()
+     addr : 0x800890D
+
+[ Firmware Begin... ]
+Booting..Name           : STM32G4-FDCAN-FW
+Booting..Ver            : V230805R1
+Booting..Clock          : 160 Mhz
+
+[OK] rtcInit()
+[OK] resetInit()
+[NG] spiFlashInit()
+     W25Q128JV Not Found 0 0 0
+[OK] flashInit()
+[OK] eepromInit()
+[OK] canInit()
+[OK] usbBegin()
+     USB_CDC
+[ ] threadInit()
+    count : 6
+    0 cmd
+    1 mode
+    2 rs485
+    3 can
+    4 cli
+    5 led
+[ ] cmdThreadInit()
+    count : 8
+    0 CMD_RS485_OPEN
+    1 CMD_RS485_CLOSE
+    2 CMD_RS485_DATA
+    3 CMD_CAN_OPEN
+    4 CMD_CAN_CLOSE
+    5 CMD_CAN_SET_FILTER
+    6 CMD_CAN_GET_FILTER
+    7 CMD_CAN_DATA
+[OK] cmdUartOpen()
+[  ] Mode : MODE_USB_TO_CAN
+[  ] Type : TYPE_USB_PACKET
+[OK] threadBegin()
