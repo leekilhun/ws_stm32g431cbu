@@ -14,9 +14,13 @@
 bool exhwInit(void)
 {
 
+#ifdef _USE_EXHW_LED
   ledInit();
+#endif
 
+#ifdef _USE_EXHW_BUTTON
   buttonInit();
+#endif
 
   return true;
 }

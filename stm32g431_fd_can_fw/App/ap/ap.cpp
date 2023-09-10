@@ -17,7 +17,7 @@ static enBtn btns[AP_OBJ::BTN_MAX];
 
 
 cmi::uart_cmd cmd_comm;
-
+cmi::task_boot task_bootloader;
 
 void apInit(void)
 {
@@ -53,6 +53,7 @@ void apInit(void)
   }
 
   {
+
     enBtn::cfg_t cfg;
     cfg.gpio_port = BOOT_BTN_GPIO_Port;
     cfg.gpio_pin =BOOT_BTN_Pin;
@@ -78,6 +79,15 @@ void apInit(void)
     cfg.ch = HW_UART_CH_USB;
     cfg.baud = 1000000;
     cmd_comm.Init(cfg);
+  }
+
+  {
+    cmi::task_boot::cfg_t cfg;
+    //cfg.boot_btn = &btns[AP_OBJ::BTN_BOOT];
+    cfg.ptr_comm = &cmd_comm;
+    cfg.ptr_rx_led = &leds[AP_OBJ::LED_COMM_RX];
+    cfg.ptr_tx_led = &leds[AP_OBJ::LED_COMM_TX];    
+    task_bootloader.Init(cfg);
   }
 
 

@@ -8,7 +8,7 @@
 #ifndef COMMON_ERR_CODE_H_
 #define COMMON_ERR_CODE_H_
 
-
+#define CMD_OK                        0x0000
 #define OK                            0x0000
 #define ERR_MEMORY                    0x0001
 #define ERR_FULL                      0x0002

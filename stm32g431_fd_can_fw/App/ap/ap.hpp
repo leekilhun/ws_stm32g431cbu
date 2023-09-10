@@ -46,6 +46,8 @@
 #include "enBtn.hpp"
 
 
+#include "task_boot.hpp"
+
 
 //control
 //#include "cnMotors.hpp"
