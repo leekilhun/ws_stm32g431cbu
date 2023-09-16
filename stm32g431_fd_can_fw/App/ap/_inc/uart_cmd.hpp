@@ -12,6 +12,7 @@
 
   communication module for interface with Master System (PC)
 
+
   */
 
 #include "ap_def.h"
@@ -42,29 +43,36 @@ namespace cmi
     PKT_TYPE_UART = 0x06,
   };
 
-
-
-#if 0
-  enum BOOT_CMD_TYPE :uint16_t
+  enum CMD_TYPE : uint16_t
   {
-    BOOT_CMD_INFO = 0x0000,
-    BOOT_CMD_VERSION = 0x0001,
-    BOOT_CMD_FLASH_ERASE = 0x0003,
-    BOOT_CMD_FLASH_WRITE = 0x0004,
-    BOOT_CMD_FLASH_READ = 0x0005,
-    BOOT_CMD_FW_VER = 0x0006,
-    BOOT_CMD_FW_ERASE = 0x0007,
-    BOOT_CMD_FW_WRITE = 0x0008,
-    BOOT_CMD_FW_READ = 0x0009,
-    BOOT_CMD_FW_VERIFY = 0x000A,
-    BOOT_CMD_FW_UPDATE = 0x000B,
-    BOOT_CMD_FW_JUMP = 0x000C,
-    BOOT_CMD_FW_BEGIN = 0x000D,
-    BOOT_CMD_FW_END = 0x000E,
-    BOOT_CMD_LED = 0x0010,
+    CMD_BOOT_INFO = 0x0000,
+    CMD_BOOT_VERSION = 0x0001,
+    CMD_BOOT_FLASH_ERASE = 0x0003,
+    CMD_BOOT_FLASH_WRITE = 0x0004,
+    CMD_BOOT_FLASH_READ = 0x0005,
+    CMD_BOOT_FW_VER = 0x0006,
+    CMD_BOOT_FW_ERASE = 0x0007,
+    CMD_BOOT_FW_WRITE = 0x0008,
+    CMD_BOOT_FW_READ = 0x0009,
+    CMD_BOOT_FW_VERIFY = 0x000A,
+    CMD_BOOT_FW_UPDATE = 0x000B,
+    CMD_BOOT_FW_JUMP = 0x000C,
+    CMD_BOOT_FW_BEGIN = 0x000D,
+    CMD_BOOT_FW_END = 0x000E,
+    CMD_BOOT_LED = 0x0010,
+
+    CMD_RS485_OPEN = 0x0100,
+    CMD_RS485_CLOSE = 0x0101,
+    CMD_RS485_DATA = 0x0102,
+
+    CMD_CAN_OPEN = 0x0110,
+    CMD_CAN_CLOSE = 0x0111,
+    CMD_CAN_DATA = 0x0112,
+    CMD_CAN_ERR_INFO = 0x0113,
+    CMD_CAN_SET_FILTER = 0x0114,
+    CMD_CAN_GET_FILTER = 0x0115,
   };
 
-#endif
   constexpr uint8_t CMD_STX0 = 0x02;
   constexpr uint8_t CMD_STX1 = 0xFD;
 
@@ -83,8 +91,11 @@ namespace cmi
 
 
 
-
-  struct uart_cmd : public IComm
+  /**
+   * @brief 
+   * communication class for uart packet communication
+   */
+  struct uart_cmd //: public IComm
   {
     /****************************************************
      *  data
@@ -332,11 +343,11 @@ namespace cmi
       {
         m_packet.BufferClear();
       }
-
+    
       while (uartAvailable(m_cfg.ch))
       {
         rx_data = uartRead(m_cfg.ch);
-        //LOG_PRINT("rx_data %d", rx_data);
+        //LOG_PRINT("rx_data : %d", rx_data);
 
         switch (m_packet.state.GetStep())
         {
@@ -378,7 +389,7 @@ namespace cmi
         case STATE_WAIT_ERR_L:
           m_packet.err_code = rx_data;
           m_packet.BufferAdd(rx_data);
-          m_packet.state.SetStep(STATE_WAIT_CMD_H);
+          m_packet.state.SetStep(STATE_WAIT_ERR_H);
           break;
 
         case STATE_WAIT_ERR_H:
@@ -396,6 +407,8 @@ namespace cmi
         case STATE_WAIT_LENGTH_H:
           m_packet.length |= (rx_data << 8);
           m_packet.BufferAdd(rx_data);
+
+          //LOG_PRINT("length : %d", m_packet.length);
 
           if (m_packet.length == 0)
             m_packet.state.SetStep(STATE_WAIT_CHECKSUM);
@@ -421,6 +434,7 @@ namespace cmi
           m_packet.check_sum_recv = rx_data;
           m_packet.check_sum = (~m_packet.check_sum) + 1;
           m_packet.state.SetStep(STATE_WAIT_STX0);
+          //LOG_PRINT("cal_checksum : %d,  recv_checksum : %d", m_packet.check_sum, m_packet.check_sum_recv);
           if (m_packet.check_sum == m_packet.check_sum_recv)
             return true;
 

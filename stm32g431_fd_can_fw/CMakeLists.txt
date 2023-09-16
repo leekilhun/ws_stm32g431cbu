@@ -86,6 +86,7 @@ lib/EEPROM_Emul/Porting/STM32G4
 
 target_compile_definitions(${EXECUTABLE} PRIVATE
   -DSTM32G431xx 
+  -DDEBUG
   )
 
 target_compile_options(${EXECUTABLE} PRIVATE

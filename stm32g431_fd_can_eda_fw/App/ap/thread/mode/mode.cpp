@@ -89,6 +89,7 @@ bool modeThreadInit(void)
 
   logPrintf("[  ] Mode : %s\n", usb_mode_str[usb_mode]);
   logPrintf("[  ] Type : %s\n", usb_type_str[usb_type]);
+  //logPrintf("[  ] USB Open [%s]\n", is_usb_open ? "true" : "false");
 
   usb_mode_pre = usb_mode;
   usb_type_pre = usb_type;

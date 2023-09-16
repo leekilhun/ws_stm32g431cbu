@@ -36,8 +36,9 @@ public:
   enLed() = default;
   ~enLed()= default;
   inline error_t Init(cfg_t& cfg){
-    LOG_PRINT("Init Success!");
+    LOG_PRINT("Init Success! pin [%d], port[%d]", cfg.gpio_pin, cfg.gpio_port);
     m_cfg = cfg;
+    Off();
     return ERROR_SUCCESS;
   }
 

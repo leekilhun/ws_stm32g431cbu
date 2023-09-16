@@ -35,8 +35,8 @@
 
 #define GPIO_IN_STATE_ON    GPIO_PIN_RESET
 #define GPIO_IN_STATE_OFF   GPIO_PIN_SET
-#define GPIO_OUT_STATE_ON   GPIO_PIN_SET
-#define GPIO_OUT_STATE_OFF  GPIO_PIN_RESET
+#define GPIO_OUT_STATE_ON   GPIO_PIN_RESET
+#define GPIO_OUT_STATE_OFF  GPIO_PIN_SET
 
 //#define  APP_USE_MOTOR_HIGH
 //#define APP_USE_MOTOR_CNT_TWO
@@ -64,7 +64,7 @@ namespace eda
 #define AP_EVENT_NODE_MAX           16
 #define AP_EVENT_Q_MAX              8
 
-
+#if 0
 #define CMD_RS485_OPEN              0x0100
 #define CMD_RS485_CLOSE             0x0101
 #define CMD_RS485_DATA              0x0102
@@ -76,7 +76,7 @@ namespace eda
 #define CMD_CAN_SET_FILTER          0x0114
 #define CMD_CAN_GET_FILTER          0x0115
 
-
+#endif
 
 
 #endif /* AP_AP_DEF_H_ */

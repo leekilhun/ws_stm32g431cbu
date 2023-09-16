@@ -29,7 +29,7 @@
 //#include "ap_io.hpp"
 
 // interface
-#include "iComm.hpp"
+//#include "iComm.hpp"
 
 
 //basic
@@ -38,6 +38,10 @@
 //#include "uart_remote.hpp"
 #include "uart_cmd.hpp"
 
+
+
+
+
 //#include "enOp.hpp"
 //#include "enCyl.hpp"
 //#include "enVac.hpp"
@@ -45,8 +49,12 @@
 #include "enLed.hpp"
 #include "enBtn.hpp"
 
+#include "enTask_boot.hpp"
+#include "enComm.hpp"
 
-#include "task_boot.hpp"
+
+#include "cnComm.hpp"
+
 
 
 //control

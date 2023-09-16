@@ -14,7 +14,11 @@
 //event driven architecture
 namespace eda
 {
-
+   
+  /**
+   * @brief 
+   *  communication class for uart packet communication
+   */
   struct cmd_uart
   {
     typedef struct

@@ -197,6 +197,8 @@ void buttonISR(void *arg)
       {
         repeat_time = button_tbl[i].repeat_time;
       }
+      //if (button_tbl[i].repeat_cnt == 0)
+
       if (button_tbl[i].pressed_cnt >= repeat_time)
       {
         button_tbl[i].pressed_cnt = 0;
