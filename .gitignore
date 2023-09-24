@@ -38,6 +38,8 @@ backup/
 .vs/
 .metadata/
 Debug/
+baram_proj/
+
 Release/
 .settings/
 Templates/
